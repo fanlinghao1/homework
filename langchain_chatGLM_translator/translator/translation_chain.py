@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplat
 #定义一个TranslationChain
 
 class TranslationChain:
-    def __init__(self, model_name: str = "gpt-3.5-turbo", verbose: bool = True):
+    def __init__(self, model_name: str = "glm-4", verbose: bool = True):
 
         # 翻译任务指令始终由 System 角色承担
         template = (
@@ -26,7 +26,7 @@ class TranslationChain:
 
         # 为了翻译结果的稳定性，将 temperature 设置为 0
         chat = ChatOpenAI(model_name=model_name, temperature=0, verbose=verbose,
-                          openai_api_key="Your ChatGLM api_key",
+                          openai_api_key="ChatGLM api_key",
                           openai_api_base = "https://open.bigmodel.cn/api/paas/v4/")
 
         self.chain = LLMChain(llm=chat, prompt=chat_prompt_template, verbose=verbose)
